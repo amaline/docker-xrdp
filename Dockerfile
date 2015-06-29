@@ -8,8 +8,7 @@ RUN yum -y groupinstall \
 ADD Xclients /etc/skel/.Xclients
 
 RUN yum -y install \
-    scap-security-guide \
-    scap-workbench \
+    firefox \
     supervisor \
     xrdp \
     ; yum clean all
