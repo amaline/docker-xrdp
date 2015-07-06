@@ -25,7 +25,7 @@ RUN sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini; \
     
 # Install Openshift client
 RUN cd /usr/bin; \
-    curl -L https://github.com/openshift/origin/releases/download/v1.0.1/openshift-origin-v1.0.1-1b60195-linux-amd64.tar.gz | gunzip | tar xvf -
+    curl -s -L https://github.com/openshift/origin/releases/download/v1.0.1/openshift-origin-v1.0.1-1b60195-linux-amd64.tar.gz | gunzip | tar xvf -
 
 EXPOSE 3389
 CMD ["supervisord", "-n"]
