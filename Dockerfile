@@ -1,4 +1,4 @@
-FROM fedora:21
+FROM fedora:latest
 
 RUN yum -y groupinstall \
     'Xfce Desktop' \
@@ -24,8 +24,15 @@ RUN sed -i '/TerminalServerUsers/d' /etc/xrdp/sesman.ini; \
     sed -i '/TerminalServerAdmins/d' /etc/xrdp/sesman.ini
     
 # Install Openshift client
-RUN cd /usr/bin; \
-    curl -s -L https://github.com/openshift/origin/releases/download/v1.0.1/openshift-origin-v1.0.1-1b60195-linux-amd64.tar.gz | gunzip | tar xvf -
+RUN mkdir /tmp/openshift ;\
+    cd /tmp/openshift; \
+    curl -s -L https://github.com/openshift/origin/releases/download/v1.0.1/openshift-origin-v1.0.1-1b60195-linux-amd64.tar.gz | gunzip | tar xvf - ;\
+    cp * /usr/bin; \
+    cd /tmp; rm -rf /tmp/openshift
+    
 
 EXPOSE 3389
+
+LABEL install="docker run -d --net=host --name NAME IMAGE"
+
 CMD ["supervisord", "-n"]
