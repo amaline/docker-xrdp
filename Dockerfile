@@ -1,4 +1,4 @@
-FROM fedora:latest
+FROM fedora:21
 
 RUN yum -y groupinstall \
     'Xfce Desktop' \
