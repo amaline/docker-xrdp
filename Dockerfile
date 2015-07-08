@@ -11,6 +11,7 @@ RUN yum -y install \
     firefox \
     supervisor \
     xrdp \
+    git \
     ; yum clean all
 
 RUN useradd foo; \
