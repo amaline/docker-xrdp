@@ -33,6 +33,6 @@ RUN mkdir /tmp/openshift ;\
 
 EXPOSE 3389
 
-LABEL install="docker run -d --net=host --name NAME IMAGE"
+LABEL INSTALL="docker run -d --net=host --name NAME IMAGE"
 
 CMD ["supervisord", "-n"]
